@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MINI HACKATHON</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js"></script>
+</head>
+<body style="background-image: url('https://static.vecteezy.com/system/resources/thumbnails/044/443/702/small_2x/abstract-gray-and-white-color-gradient-background-illustration-vector.jpg'); background-size: cover ; background-repeat: no-repeat;" >
+
+  <nav class="bg-grey-300 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex-shrink-0 text-2xl font-bold text-black-600">NOVELS</div>
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-gray-600 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+        <div id="menu" class="hidden md:flex space-x-6 items-center">
+          <a href="#" class="text-gray-700 hover:text-blue-600">Home</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Services</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">Contact</a>
+          <div class="space-x-2">
+            <button class="px-4 py-2 bg-black text-white rounded hover:bg-black">Login</button>
+            <button class="px-4 py-2 border border-black text-black rounded hover:bg-black"> <a href="index.html"></a>Signup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+      <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Services</a>
+      <a href="#" class="block py-2 text-gray-700 hover:text-blue-600">Contact</a>
+      <div class="mt-2 space-x-2">
+        <button class="w-full py-2 bg-black text-white rounded hover:bg-black">Login</button>
+        <button class="w-full py-2 mt-2 border border-black-500 text-black rounded hover:bg-blue-50">Signup</button>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+
+<div class="flex justify-center gap-4 mt-[60px] mb-8">
+    <button onclick="showCategory('Peer e Kamil')" class="bg-black text-white px-4 py-2 rounded hover:bg-black">Peer e Kamil</button>
+    <button onclick="showCategory('Aab e Hayaat')" class="bg-black text-white px-4 py-2 rounded hover:bg-black">Aab e Hayaat</button>
+    <button onclick="showCategory('Jannat K Pattay')" class="bg-black text-white px-4 py-2 rounded hover:bg-black">Jannat K Pattay</button>
+  </div>
+
+  <div class="min-h-screen flex items-center justify-center bg-transparent">
+    <form class="w-full max-w-md bg-transparent p-6 rounded-lg border border-black shadow-md">
+      <div class="mb-4">
+        <label for="category" class="block text-gray-700 font-medium mb-2">Category</label>
+        <input type="text" id="category" name="category" placeholder="Enter category"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+  
+      <div class="mb-4">
+        <label for="description" class="block text-gray-700 font-medium mb-2">Description</label>
+        <textarea id="description" name="description" rows="3" placeholder="Enter description"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+      </div>
+  
+      <div class="mb-4">
+        <label for="price" class="block text-gray-700 font-medium mb-2">Title</label>
+        <input type="number" id="price" name="price" placeholder="Enter price"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+  
+      <button type="submit"
+        class="w-full bg-black text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition">Submit</button>
+    </form>
+  </div>
+  
+  
+ 
+  <div class="cards justify-center gap-6" id="cardContainer">
+    <div class="card" id="Peer e Kamil">
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1441831053i/3260388.jpg" alt="">
+    </div>
+    <div class="card hidden" id="Aab e Hayaat">
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1420365972i/23486520.jpg" alt="">
+    </div>
+    <div class="card hidden" id="Jannat K Pattay">
+      <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1373050509i/18163929.jpg" alt="">
+    </div>
+  </div>
+  
+  <script>
+    function showCategory(category) {
+      const allCards = document.querySelectorAll('.card');
+      allCards.forEach(card => {
+        card.classList.add('hidden');
+      });
+  
+      const selectedCard = document.getElementById(category);
+      if (selectedCard) {
+        selectedCard.classList.remove('hidden');
+      }
+    }
+  </script>
+ 
+
+ <script>
+  function showCategory(category) {
+    const allCards = document.querySelectorAll('.card');
+    allCards.forEach(card => {
+      card.classList.add('hidden');
+    });
+
+    const selectedCard = document.getElementById(category);
+    if (selectedCard) {
+      selectedCard.classList.remove('hidden');
+    }
+  }
+
+  document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const category = document.getElementById('category').value.trim();
+    const description = document.getElementById('description').value.trim();
+    const price = document.getElementById('price').value.trim();
+    const selectedCard = document.getElementById(category);
+
+    if (!selectedCard) {
+      alert("Category not found. Please use a valid one like 'Peer e Kamil'");
+      return;
+    }
+
+    showCategory(category);
+
+    let prevInfo = selectedCard.querySelector('.info');
+    if (prevInfo) {
+      prevInfo.remove();
+    }
+
+    const infoDiv = document.createElement('div');
+    infoDiv.classList.add('info', 'p-4', 'bg-white', 'rounded', 'shadow', 'mt-4', 'border', 'border-gray-300');
+
+    const descLabel = document.createElement('label');
+    descLabel.textContent = "Description:";
+    descLabel.classList.add('block', 'text-gray-700', 'mb-1');
+    const descInput = document.createElement('input');
+    descInput.type = "text";
+    descInput.value = description;
+    descInput.classList.add('w-full', 'mb-2', 'px-3', 'py-1', 'border', 'rounded');
+
+    const priceLabel = document.createElement('label');
+    priceLabel.textContent = "Title:";
+    priceLabel.classList.add('block', 'text-gray-700', 'mb-1');
+    const priceInput = document.createElement('input');
+    priceInput.type = "number";
+    priceInput.value = price;
+    priceInput.classList.add('w-full', 'mb-3', 'px-3', 'py-1', 'border', 'rounded');
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = "Remove";
+    deleteBtn.classList.add('bg-red-500', 'text-white', 'px-4', 'py-1', 'rounded', 'hover:bg-red-600');
+    deleteBtn.onclick = function () {
+      infoDiv.remove();
+    }
+
+
+    infoDiv.appendChild(descLabel);
+    infoDiv.appendChild(descInput);
+    infoDiv.appendChild(priceLabel);
+    infoDiv.appendChild(priceInput);
+    infoDiv.appendChild(deleteBtn);
+
+    selectedCard.appendChild(infoDiv);
+  });
+</script>
+
+</body>
+</html>
